@@ -24,3 +24,5 @@ Route::get('/gym/{id}', 'GymController@show');
 Route::post('/gym', 'GymController@store');
 Route::put('/gym/{id}', 'GymController@update');
 Route::delete('/gym/{id}', 'GymController@delete');
+
+Route::get('/vote/average', 'GymController@averageRating');
