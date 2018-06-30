@@ -90,4 +90,9 @@ class GymController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function averageRating()
+    {
+        Gym::avg('rating');
+    }
 }
