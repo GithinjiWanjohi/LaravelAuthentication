@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Gym;
-use App\Http\Resources\GymResource;
+use App\Http\Resources\UserResource;
+use App\User;
 use Illuminate\Http\Request;
 
-class GymController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class GymController extends Controller
      */
     public function index()
     {
-        $gym = Gym::all();
+        $user = User::all();
 
-        return GymResource::collection($gym);
+        return UserResource::collection($user);
     }
 
     /**
@@ -34,35 +34,33 @@ class GymController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $gym = Gym::create($request->all());
-
-        return GymResource::collection($gym);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  $gym
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $gym = Gym::all()->findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return GymResource::collection($gym);
+        return UserResource::collection($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Gym  $gym
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($gym)
+    public function edit($id)
     {
         //
     }
@@ -71,34 +69,29 @@ class GymController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Gym  $gym
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gym $gym)
+    public function update(Request $request, $id)
     {
-        $gym = $gym->update($request->all());
+        $user = User::whereUserID($id)->firstOrFail();
+        $user->fill(\Input::all());
+        $user->save();
 
-        return GymResource::collection($gym);
+        return UserResource::collection($user);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Gym $gym
+     * @param  User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Exception
      */
-    public function destroy(Gym $gym)
+    public function destroy(User $user)
     {
-        $gym = $gym->delete();
+        $user = $user->delete();
 
-        return GymResource::collection($gym);
-    }
-
-    public function averageRating()
-    {
-        $avg = Gym::all()->avg('rating');
-
-        return GymResource::collection($avg);
+        return UserResource::collection($user);
     }
 }
