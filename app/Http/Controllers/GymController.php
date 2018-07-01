@@ -90,9 +90,9 @@ class GymController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function update( $id)
+    public function update(Request $request, $id)
     {
-        $gym = Gym::findOrFail($id);
+        $gym = Gym::create($request->all());
         $gym->gym_name = request('gym_name');
         $gym->latitude = request('latitude');
         $gym->longitude = request('longitude');
