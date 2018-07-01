@@ -84,14 +84,15 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User $user
+     * @param  $id
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Exception
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user = $user->delete();
+        $user = User::all()->find($id);
+        $user->delete();
 
-        return UserResource::collection($user);
+        return response()->json($user, 200);
     }
 }
