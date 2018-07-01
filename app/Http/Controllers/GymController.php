@@ -47,7 +47,7 @@ class GymController extends Controller
             $gym->opening_time = request('opening_time');
             $gym->closing_time = request('closing_time');
             $gym->save();
-            return redirect('/gym');
+            return response()->json($gym, 200);
         } else{
             $gym = new Gym();
             $gym->gym_name = request('gym_name');
@@ -56,7 +56,7 @@ class GymController extends Controller
             $gym->opening_time = request('opening_time');
             $gym->closing_time = request('closing_time');
             $gym->save();
-            return redirect('/gym');
+            return response()->json($gym, 200);
         }
     }
 
@@ -93,9 +93,14 @@ class GymController extends Controller
      */
     public function update(Request $request, Gym $gym)
     {
-        $gym = $gym->update($request->all());
-
-        return GymResource::collection($gym);
+        $gym = Gym::all()->find(request('id'));
+        $gym->gym_name = request('gym_name');
+        $gym->latitude = request('latitude');
+        $gym->longitude = request('longitude');
+        $gym->opening_time = request('opening_time');
+        $gym->closing_time = request('closing_time');
+        $gym->save();
+        return response()->json($gym, 200);
     }
 
     /**
