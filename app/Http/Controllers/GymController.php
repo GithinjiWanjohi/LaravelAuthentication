@@ -69,11 +69,6 @@ class GymController extends Controller
     public function show($id)
     {
         $gym = Gym::all()->findOrFail($id);
-        $gym->gym_name = request('gym_name');
-        $gym->latitude = request('latitude');
-        $gym->longitude = request('longitude');
-        $gym->opening_time = request('opening_time');
-        $gym->closing_time = request('closing_time');
 
         return GymResource::collection($gym);
     }
@@ -98,6 +93,11 @@ class GymController extends Controller
     public function update( $id)
     {
         $gym = Gym::findOrFail($id);
+        $gym->gym_name = request('gym_name');
+        $gym->latitude = request('latitude');
+        $gym->longitude = request('longitude');
+        $gym->opening_time = request('opening_time');
+        $gym->closing_time = request('closing_time');
 
         $gym->save();
 
