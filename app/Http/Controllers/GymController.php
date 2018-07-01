@@ -44,8 +44,8 @@ class GymController extends Controller
             $gym->gym_name = request('gym_name');
             $gym->latitude = request('latitude');
             $gym->longitude = request('longitude');
-            $gym->opening_hours = request('opening_time');
-            $gym->closing_hours = request('closing_time');
+            $gym->opening_time = request('opening_time');
+            $gym->closing_time = request('closing_time');
             $gym->save();
             return redirect('/gym');
         } else{
@@ -53,8 +53,8 @@ class GymController extends Controller
             $gym->gym_name = request('gym_name');
             $gym->latitude = request('latitude');
             $gym->longitude = request('longitude');
-            $gym->opening_hours = request('opening_time');
-            $gym->closing_hours = request('closing_time');
+            $gym->opening_time = request('opening_time');
+            $gym->closing_time = request('closing_time');
             $gym->save();
             return redirect('/gym');
         }
