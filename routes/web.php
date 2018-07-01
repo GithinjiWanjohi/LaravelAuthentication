@@ -33,4 +33,4 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/{id}', 'UserController@show');
 Route::post('/users/save', 'UserController@store');
 Route::put('/users/{id}', 'UserController@update');
-Route::delete('/users/{id}', 'UserController@destroy');
+Route::delete('/users/delete/{id}', 'UserController@destroy');
