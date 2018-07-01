@@ -110,7 +110,7 @@ class GymController extends Controller
         $gym = Gym::all()->find($id);
         $gym->delete();
 
-        return GymResource::collection($gym);
+        return response()->json($gym, 200);
     }
 
     public function averageRating()
