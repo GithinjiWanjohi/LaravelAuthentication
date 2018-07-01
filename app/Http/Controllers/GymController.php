@@ -64,13 +64,13 @@ class GymController extends Controller
      * Display the specified resource.
      *
      * @param  $gym
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return UserResource
      */
     public function show($id)
     {
-        $gym = Gym::all()->findOrFail($id);
-
-        return response()->json($gym, 200);
+        $gym = Gym::findOrFail($id);
+        //Return as a resource
+        return new UserResource($gym);
     }
 
     /**

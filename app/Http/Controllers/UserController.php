@@ -45,13 +45,13 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return UserResource
      */
     public function show($id)
     {
         $user = User::findOrFail($id);
-
-        return UserResource::collection($user);
+        //Return as a resource
+        return new UserResource($user);
     }
 
     /**
