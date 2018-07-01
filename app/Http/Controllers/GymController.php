@@ -69,6 +69,11 @@ class GymController extends Controller
     public function show($id)
     {
         $gym = Gym::all()->findOrFail($id);
+        $gym->gym_name = request('gym_name');
+        $gym->latitude = request('latitude');
+        $gym->longitude = request('longitude');
+        $gym->opening_time = request('opening_time');
+        $gym->closing_time = request('closing_time');
 
         return GymResource::collection($gym);
     }
@@ -87,22 +92,13 @@ class GymController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  $id
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function update(Request $request, $id)
+    public function update( $id)
     {
-        $gym = Gym::updateOrCreate(
-            ['id' => $id],
-            [
-                'gym_name' => request('gym_name'),
-                'latitude' => request('latitude'),
-                'longitude' => request('longitude'),
-                'opening_time' => request('opening_time'),
-                'closing_time' => request('closing_time')
-            ]
-        );
+        $gym = Gym::findOrFail($id);
+
         $gym->save();
 
         return response()->json($id, 200);
