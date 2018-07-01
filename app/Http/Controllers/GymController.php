@@ -70,7 +70,7 @@ class GymController extends Controller
     {
         $gym = Gym::all()->findOrFail($id);
 
-        return GymResource::collection($gym);
+        return response()->json($gym, 200);
     }
 
     /**
