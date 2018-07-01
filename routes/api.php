@@ -19,5 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'Auth\RegisterController@register');
 
-//Routes to get, post and delete user data
-Route::get('/user', 'UserController@index');
+
