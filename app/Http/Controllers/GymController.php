@@ -88,19 +88,19 @@ class GymController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Gym  $gym
+     * @param  $id
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function update(Request $request, Gym $gym)
+    public function update(Request $request, $id)
     {
-        $gym = Gym::all()->find(request('id'));
+        $gym = Gym::all()->find($id);
         $gym->gym_name = request('gym_name');
         $gym->latitude = request('latitude');
         $gym->longitude = request('longitude');
         $gym->opening_time = request('opening_time');
         $gym->closing_time = request('closing_time');
         $gym->save();
-        return response()->json($gym, 200);
+        return response()->json($id, 200);
     }
 
     /**
