@@ -64,13 +64,13 @@ class GymController extends Controller
      * Display the specified resource.
      *
      * @param  $gym
-     * @return UserResource
+     * @return Resource
      */
     public function show($id)
     {
         $gym = Gym::findOrFail($id);
         //Return as a resource
-        return new UserResource($gym);
+        return new GymResource($gym);
     }
 
     /**
