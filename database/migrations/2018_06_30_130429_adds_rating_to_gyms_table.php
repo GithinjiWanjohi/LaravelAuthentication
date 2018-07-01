@@ -13,7 +13,7 @@ class AddsRatingToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('gyms', function (Blueprint $table) {
             $table->integer('rating')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddsRatingToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('gyms', function (Blueprint $table) {
             $table->dropColumn(['rating']);
         });
     }
