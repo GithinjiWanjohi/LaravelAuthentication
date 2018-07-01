@@ -101,13 +101,14 @@ class GymController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Gym $gym
+     * @param   $id
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Exception
      */
-    public function destroy(Gym $gym)
+    public function destroy($id)
     {
-        $gym = $gym->delete();
+        $gym = Gym::all($id);
+        $gym->delete();
 
         return GymResource::collection($gym);
     }
