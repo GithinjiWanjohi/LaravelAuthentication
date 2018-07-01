@@ -107,7 +107,7 @@ class GymController extends Controller
      */
     public function destroy($id)
     {
-        $gym = Gym::all($id);
+        $gym = Gym::all()->find($id);
         $gym->delete();
 
         return GymResource::collection($gym);
