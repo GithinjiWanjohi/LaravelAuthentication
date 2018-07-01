@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gym', 'GymController@index');
 Route::get('/gym/create', 'GymController@create')->name('gym');
 Route::get('/gym/{id}', 'GymController@show');
-Route::post('/gym', 'GymController@store');
+Route::post('/gym', 'GymController@store')->name('gymStore');
 Route::put('/gym/{id}', 'GymController@update');
 Route::delete('/gym/{id}', 'GymController@destroy');
 
