@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/gym', 'GymController@index')->name('gym');
-Route::get('/gym/create', 'GymController@create');
+Route::get('/gym', 'GymController@index');
+Route::get('/gym/create', 'GymController@create')->name('gym');
 Route::get('/gym/{id}', 'GymController@show');
 Route::post('/gym', 'GymController@store');
 Route::put('/gym/{id}', 'GymController@update');
