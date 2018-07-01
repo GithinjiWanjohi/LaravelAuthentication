@@ -102,7 +102,7 @@ class GymController extends Controller
 
         $gym->save();
 
-        return response()->json($id, 200);
+        return response()->json($gym, 200);
     }
 
     /**
