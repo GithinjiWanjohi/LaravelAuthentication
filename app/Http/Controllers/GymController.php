@@ -122,7 +122,7 @@ class GymController extends Controller
 
     public function averageRating()
     {
-        $avg = Gym::all()->avg('rating');
+        $avg = Gym::avg('rating');
 
         return GymResource::collection($avg);
     }
