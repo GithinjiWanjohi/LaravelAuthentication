@@ -23,9 +23,13 @@ Route::get('/gym', 'GymController@index')->name('gym');
 Route::get('/gym/{id}', 'GymController@show');
 Route::post('/gym', 'GymController@store');
 Route::put('/gym/{id}', 'GymController@update');
-Route::delete('/gym/{id}', 'GymController@delete');
+Route::delete('/gym/{id}', 'GymController@destroy');
 
 Route::get('/vote/average', 'GymController@averageRating');
 
 //Routes to get, post and delete user data
 Route::get('/users', 'UserController@index');
+Route::get('/users{id}', 'UserController@show');
+Route::post('/users/save', 'UserController@store');
+Route::put('/users{id}', 'UserController@update');
+Route::delete('/users{id}', 'UserController@destroy');
