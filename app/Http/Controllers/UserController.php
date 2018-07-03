@@ -38,13 +38,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->first_name = request('first_name');
-        $user->last_name = request('last_name');
-        $user->email = request('email');
-        $user->password = request('password');
-        $user->save();
-        return response()->json($user, 200);
+        //You should add validation before creating the user.
+
+        $user = User::create([
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
+            "email"  => $request->email,
+            "password" => bcrypt($request->password)
+        ]);
+
+        if(!$user){
+            return response()->json($user, 400);
+        }
+
+//        return response(["user" => $user], 200);
+//        $user = new User();
+//        $user->first_name = request('first_name');
+//        $user->last_name = request('last_name');
+//        $user->email = request('email');
+//        $user->password = request('password');
+//        $user->save();
+//        return response()->json($user, 200);
     }
 
     /**
