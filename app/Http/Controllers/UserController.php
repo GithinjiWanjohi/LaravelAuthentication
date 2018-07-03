@@ -38,24 +38,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-        if (request('id') != null){
-            $user = User::all()->find(request('id'));
-            $user->first_name = request('first_name');
-            $user->last_name = request('last_name');
-            $user->email = request('email');
-            $user->password = request('password');
-            $user->save();
-            return response()->json($user, 200);
-        } else{
-            $user = new User();
-            $user->first_name = request('first_name');
-            $user->last_name = request('last_name');
-            $user->email = request('email');
-            $user->password = request('password');
-            $user->save();
-            return response()->json($user, 200);
-        }
+        $user = new User();
+        $user->first_name = request('first_name');
+        $user->last_name = request('last_name');
+        $user->email = request('email');
+        $user->password = request('password');
+        $user->save();
+        return response()->json($user, 200);
     }
 
     /**
