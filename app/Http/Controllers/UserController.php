@@ -115,4 +115,20 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
+
+    public function login (Request $request) {
+
+        if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            // Authentication passed...
+            $user = auth()->user();
+            $user->api_token = str_random(60);
+            $user->save();
+            return $user;
+        }
+
+        return response()->json([
+            'error' => 'Unauthenticated user',
+            'code' => 401,
+        ], 401);
+    }
 }
