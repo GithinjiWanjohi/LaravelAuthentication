@@ -67,9 +67,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return UserResource
      */
-    public function show($email)
+    public function show($id)
     {
-        $user = User::findOrFail($email);
+        $user = User::findOrFail($id);
         //Return as a resource
         return new UserResource($user);
     }
