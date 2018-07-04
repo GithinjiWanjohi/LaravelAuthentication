@@ -26,7 +26,7 @@ class AddsAddressToGymTable extends Migration
     public function down()
     {
         Schema::table('gyms', function (Blueprint $table) {
-            $table->dropColumn(['rating']);
+            $table->dropColumn(['address']);
         });
     }
 }
