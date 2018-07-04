@@ -38,6 +38,19 @@ class GymController extends Controller
      */
     public function store(Request $request)
     {
+        $gym = Gym::create([
+            "gym_name" => $request->first_name,
+            "address" => $request->address,
+            "latitude"  => $request->latitude,
+            "longitude"  => $request->longitude,
+            "closing_time"  => $request->closing_time,
+            "opening_time"  => $request->opening_time,
+        ]);
+
+        if(!$gym){
+            return response()->json($gym, 400);
+        }
+
         $gym = Gym::create($request->all());
         if (request('id') != null){
             $gym = Gym::all()->find(request('id'));
