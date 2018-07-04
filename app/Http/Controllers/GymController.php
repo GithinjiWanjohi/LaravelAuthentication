@@ -39,7 +39,7 @@ class GymController extends Controller
     public function store(Request $request)
     {
         $gym = Gym::create([
-            "gym_name" => $request->first_name,
+            "gym_name" => $request->gym_name,
             "address" => $request->address,
             "latitude"  => $request->latitude,
             "longitude"  => $request->longitude,
