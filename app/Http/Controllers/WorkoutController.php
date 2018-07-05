@@ -16,7 +16,7 @@ class WorkoutController extends Controller
     {
         $workout = Workout::all();
 
-        return response()->json($user, 200);
+        return response()->json($workout, 200);
     }
 
     /**
