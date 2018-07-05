@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/gym/*',
         '/users/*',
-        '/workout/*'
+        '/workout/*',
+        '/instructor/*'
     ];
 }

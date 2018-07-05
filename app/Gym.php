@@ -13,4 +13,8 @@ class Gym extends Model
         'opening_time',
         'closing_time',
     ];
+
+    public function instructor(){
+        return $this->hasMany('App\Instructor');
+    }
 }
