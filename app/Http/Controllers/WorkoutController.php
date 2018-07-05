@@ -16,7 +16,7 @@ class WorkoutController extends Controller
     {
         $workout = Workout::all();
 
-        return new WorkoutsResource::collection($workout);
+        return response()->json($workout, 200);
     }
 
     /**
