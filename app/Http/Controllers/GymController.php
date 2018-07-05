@@ -50,6 +50,8 @@ class GymController extends Controller
         if(!$gym){
             return response()->json($gym, 400);
         }
+
+        return response()->json($gym, 200);
 //
 //        $gym = Gym::create($request->all());
 //        if (request('id') != null){
