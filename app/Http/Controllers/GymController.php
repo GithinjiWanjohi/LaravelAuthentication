@@ -50,27 +50,27 @@ class GymController extends Controller
         if(!$gym){
             return response()->json($gym, 400);
         }
-
-        $gym = Gym::create($request->all());
-        if (request('id') != null){
-            $gym = Gym::all()->find(request('id'));
-            $gym->gym_name = request('gym_name');
-            $gym->latitude = request('latitude');
-            $gym->longitude = request('longitude');
-            $gym->opening_time = request('opening_time');
-            $gym->closing_time = request('closing_time');
-            $gym->save();
-            return response()->json($gym, 200);
-        } else{
-            $gym = new Gym();
-            $gym->gym_name = request('gym_name');
-            $gym->latitude = request('latitude');
-            $gym->longitude = request('longitude');
-            $gym->opening_time = request('opening_time');
-            $gym->closing_time = request('closing_time');
-            $gym->save();
-            return response()->json($gym, 200);
-        }
+//
+//        $gym = Gym::create($request->all());
+//        if (request('id') != null){
+//            $gym = Gym::all()->find(request('id'));
+//            $gym->gym_name = request('gym_name');
+//            $gym->latitude = request('latitude');
+//            $gym->longitude = request('longitude');
+//            $gym->opening_time = request('opening_time');
+//            $gym->closing_time = request('closing_time');
+//            $gym->save();
+//            return response()->json($gym, 200);
+//        } else{
+//            $gym = new Gym();
+//            $gym->gym_name = request('gym_name');
+//            $gym->latitude = request('latitude');
+//            $gym->longitude = request('longitude');
+//            $gym->opening_time = request('opening_time');
+//            $gym->closing_time = request('closing_time');
+//            $gym->save();
+//            return response()->json($gym, 200);
+//        }
     }
 
     /**
