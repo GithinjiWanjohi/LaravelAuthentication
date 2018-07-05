@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\WorkoutsResource;
 use App\Workout;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,13 @@ class WorkoutController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
         $workout = Workout::all();
 
-        return response()->json($workout, 200);
+        return WorkoutsResource::collection($workout);
     }
 
     /**
@@ -33,7 +34,7 @@ class WorkoutController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return WorkoutsResource
      */
     public function store(Request $request)
     {
@@ -50,7 +51,7 @@ class WorkoutController extends Controller
         if(!$workout){
             return response()->json($workout, 400);
         }else{
-            return response()->json($workout, 200);
+            return new WorkoutsResource($workout);
         }
     }
 
@@ -58,13 +59,13 @@ class WorkoutController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return WorkoutsResource
      */
     public function show($id)
     {
         $workout = Workout::findOrFail($id);
         //Return as a resource
-        return response()->json($workout, 200);
+        return new WorkoutsResource($workout);
     }
 
     public function showUserWorkout(Request $request)
@@ -73,7 +74,8 @@ class WorkoutController extends Controller
         $user_id = $request->input('user_id');
         $workout = Workout::where('user_id', $user_id)->get();
         //Return as a resource
-        return response()->json($workout, 200);
+
+        return new WorkoutsResource($workout);
     }
 
     /**
@@ -92,7 +94,7 @@ class WorkoutController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return WorkoutsResource
      */
     public function update(Request $request, $id)
     {
@@ -100,20 +102,20 @@ class WorkoutController extends Controller
         $workout->fill(\Input::all());
         $workout->save();
 
-        return response()->json($workout, 200);
+        return new WorkoutsResource($workout);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return WorkoutsResource
      */
     public function destroy($id)
     {
         $workout = Workout::findOrFail($id);
         $workout->delete();
 
-        return response()->json($workout, 200);
+        return new WorkoutsResource($workout);
     }
 }
