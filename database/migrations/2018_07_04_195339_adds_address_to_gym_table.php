@@ -13,7 +13,7 @@ class AddsAddressToGymTable extends Migration
      */
     public function up()
     {
-        Schema::create('gyms', function (Blueprint $table) {
+        Schema::table('gyms', function (Blueprint $table) {
             $table->string('address')->nullable();
         });
     }
