@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InstructorResource;
 use App\Instructor;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,13 @@ class InstructorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
         $instructor = Instructor::all();
 
-        return response()->json($instructor, 200);
+        return InstructorResource::collection($instructor);
     }
 
     /**
