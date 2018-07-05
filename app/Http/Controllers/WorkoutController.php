@@ -16,7 +16,7 @@ class WorkoutController extends Controller
     {
         $workout = Workout::all();
 
-        return WorkoutResource::collection($workout);
+        return response()->json($user, 200);
     }
 
     /**
@@ -64,7 +64,7 @@ class WorkoutController extends Controller
     {
         $workout = Workout::findOrFail($id);
         //Return as a resource
-        return new UserResource($workout);
+        return new WorkoutResource($workout);
     }
 
     public function showUserWorkout(Request $request)
@@ -73,7 +73,7 @@ class WorkoutController extends Controller
         $user_id = $request->input('user_id');
         $workout = Workout::where('user_id', $user_id)->get();
         //Return as a resource
-        return new UserResource($workout);
+        return new WorkoutResource($workout);
     }
 
     /**
