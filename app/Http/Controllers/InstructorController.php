@@ -16,7 +16,7 @@ class InstructorController extends Controller
     {
         $instructor = Instructor::all();
 
-        response()->json($instructor);
+        response()->json($instructor, 200);
     }
 
     /**
@@ -107,10 +107,13 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        $instructor = User::findOrFail($id);
+        $instructor = Instructor::findOrFail($id);
         $instructor->delete();
 
-        $user = User::findOrFail($id);
-        $user->delete();
+        if(!$instructor){
+            return response()->json($instructor, 400);
+        } else{
+            return response()->json($instructor, 200);
+        }
     }
 }
