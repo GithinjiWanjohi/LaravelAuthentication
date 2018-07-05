@@ -49,6 +49,8 @@ class UserController extends Controller
 
         if(!$user){
             return response()->json($user, 400);
+        } else{
+            return response()->json($user, 200);
         }
 
 //        return response(["user" => $user], 200);

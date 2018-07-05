@@ -34,4 +34,8 @@ class User extends Authenticatable
 
         return $this->api_token;
     }
+
+    public function workout(){
+        return $this->hasMany('App\Workout');
+    }
 }
