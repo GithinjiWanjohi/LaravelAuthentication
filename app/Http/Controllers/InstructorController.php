@@ -16,7 +16,7 @@ class InstructorController extends Controller
     {
         $instructor = Instructor::all();
 
-        response()->json($instructor, 200);
+        return response()->json($instructor, 200);
     }
 
     /**
