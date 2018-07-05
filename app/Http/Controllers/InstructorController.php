@@ -38,10 +38,10 @@ class InstructorController extends Controller
     public function store(Request $request)
     {
         $instructor = Instructor::create([
+            "gym_no'" => $request->gym_no,
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
             "email"  => $request->email,
-            "gym_no'" => $request->gym_no,
         ]);
 
         if(!$instructor){
