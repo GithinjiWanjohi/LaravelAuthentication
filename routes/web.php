@@ -39,7 +39,7 @@ Route::delete('/users/delete/{id}', 'UserController@destroy');
 //Routes to get, post and delete workouts data
 Route::get('/workout', 'WorkoutController@index');
 Route::get('/workout/{id}', 'WorkoutController@show');
-Route::get('/user/workout', 'WorkoutController@showUserWorkout');
+Route::post('/user/workout', 'WorkoutController@showUserWorkout');
 Route::post('/workout/save', 'WorkoutController@store');
 Route::put('/workout/{id}', 'WorkoutController@update');
 Route::delete('/workout/delete/{id}', 'WorkoutController@destroy');
