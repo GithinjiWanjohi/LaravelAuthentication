@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/gym/*',
         '/users/*',
         '/workout/*',
+        '/workout/save/*',
         '/instructor/*'
     ];
 }
