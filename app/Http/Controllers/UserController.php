@@ -97,20 +97,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = DB::table('users')
+        DB::table('users')
             ->where('id', $id)
-            ->update([
-                "first_name" => $request->first_name,
-                "last_name" => $request->last_name,
-                "email"  => $request->email,
-                "password" => bcrypt($request->password),
-                "gender" => $request->gender,
-                "age" => $request->age,
-                "weight" => $request->weight,
-                "pref_gym" => $request->pref_gym
-                ]);
-
-        return UserResource::collection($user);
+            ->update($request->all());
     }
 
     /**
