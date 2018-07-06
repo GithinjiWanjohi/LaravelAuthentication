@@ -101,7 +101,7 @@ class UserController extends Controller
             ->where('id', $id)
             ->update($request->all());
 
-        return UserResource::collection($user);
+        return response()->json($user, 200);
     }
 
     /**
