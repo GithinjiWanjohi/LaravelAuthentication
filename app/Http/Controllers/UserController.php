@@ -44,7 +44,7 @@ class UserController extends Controller
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
             "email"  => $request->email,
-            "password" => bcrypt($request->password)
+            "password" => bcrypt($request->password),
         ]);
 
         if(!$user){
@@ -92,12 +92,12 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function update(Request $request, $id)
     {
         $user = User::whereUserID($id)->firstOrFail();
-        $user->fill(\Input::all());
+        $user->fill(\Input::all($request));
         $user->save();
 
         return UserResource::collection($user);
