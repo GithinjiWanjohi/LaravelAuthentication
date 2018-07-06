@@ -48,11 +48,8 @@ class WorkoutController extends Controller
             "time"  => $request->time,
         ]);
 
-        if(!$workout){
-            return response()->json($workout, 400);
-        }else{
-            return new WorkoutsResource($workout);
-        }
+        return new WorkoutsResource($workout);
+
     }
 
     /**
