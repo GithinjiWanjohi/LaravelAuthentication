@@ -93,15 +93,21 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return UserResource
      */
     public function update(Request $request, $id)
     {
-        $user = DB::table('users')
-            ->where('id', $id)
-            ->update($request->all());
+        $user = User::all()->find($id);
+        $user->first_name = request('first_name');
+        $user->last_name = request('last_name');
+        $user->email = request('email');
+        $user->age = request('age');
+        $user->gender = request('gender');
+        $user->weight = request('weight');
+        $user->pref_gym = request('pref_gym');
+        $user->save();
 
-        return response()->json($user, 200);
+        return new UserResource($user);
     }
 
     /**
