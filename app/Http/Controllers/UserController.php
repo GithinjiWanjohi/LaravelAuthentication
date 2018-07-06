@@ -74,7 +74,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         //Return as a resource
-        return new UserResource($user);
+        return response()->json($user);
     }
 
     /**
