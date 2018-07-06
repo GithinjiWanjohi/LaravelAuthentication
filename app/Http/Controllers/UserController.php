@@ -109,7 +109,6 @@ class UserController extends Controller
                 "weight" => $request->weight,
                 "pref_gym" => $request->pref_gym
                 ]);
-        $user->save();
 
         return UserResource::collection($user);
     }
